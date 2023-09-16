@@ -1,0 +1,35 @@
+<app-toolbar></app-toolbar>
+<div class="container-fluid">
+    <div class="container">
+        <form [formGroup]="loginForm" class="my-form">
+
+            <div class="logo-container">
+                <img src="assets/images/skysecurelogo.jpg" alt="Company Logo" class="company-logo" />
+            </div>
+
+            <mat-form-field class="form-group" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required />
+                <mat-error *ngIf="loginForm.get('name')?.hasError('required')">Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-group" appearance="outline">
+                <mat-label>Email ID</mat-label>
+                <input matInput type="email" formControlName="email" required />
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Enter Email ID</mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Invalid email format</mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('pattern')">Please check email format</mat-error>
+            </mat-form-field>
+
+            <div class="form-group">
+                <mat-label class="gender">Gender :</mat-label>
+                <mat-radio-group formControlName="gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <button (click)="onSubmit()" mat-raised-button>Submit</button>
+        </form>
+    </div>
+</div>
