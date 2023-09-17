@@ -58,13 +58,14 @@ export class Page2Component implements OnInit {
     if (clicked === true) {
       this.displayedColumns.splice(3)
       this.profileButtonClicked = clicked;
-
+      this.enableEdit = false;
     } else if (clicked === false) {
       let flag = this.displayedColumns.includes('action');
       if (!flag) {
-        this.displayedColumns.push('action')
+        this.displayedColumns.push('action');
+        this.disableBtn =true;
+        this.profileButtonClicked = clicked;
       }
-      this.profileButtonClicked = clicked;
     }
   }
 

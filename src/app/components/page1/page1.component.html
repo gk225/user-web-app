@@ -15,7 +15,7 @@
 
             <mat-form-field class="form-group" appearance="outline">
                 <mat-label>Email ID</mat-label>
-                <input matInput type="email" formControlName="email" required />
+                <input matInput formControlName="email" required />
                 <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Enter Email ID</mat-error>
                 <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Invalid email format</mat-error>
                 <mat-error *ngIf="loginForm.get('email')?.hasError('pattern')">Please check email format</mat-error>
