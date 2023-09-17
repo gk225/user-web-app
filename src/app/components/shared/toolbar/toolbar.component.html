@@ -1,0 +1,64 @@
+<mat-sidenav-container [hasBackdrop]="true">
+  <mat-sidenav #sidenav mode="over" [(opened)]="isExpanded" [fixedInViewport]="true">
+    <mat-list>
+      <mat-list-item class="nav-menu-st" routerLink='/page1' [routerLinkActive]="['is-active']">
+        <h4 mat-line>
+          <span class="menu-label">Page 1</span>
+        </h4>
+      </mat-list-item>
+      <mat-list-item class="nav-menu-st" routerLink='/page2' [routerLinkActive]="['is-active']">
+        <h4 mat-line>
+          <span class="menu-label">Page 2</span>
+        </h4>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="d-flex">
+      <mat-toolbar-row>
+        <div class="d-flex justify-content-between align-items-center w-100">
+
+          <mat-icon *ngIf="!sidenav.opened" (click)="sidenav.toggle()" class="menu-icon"
+            style="vertical-align: bottom;cursor: pointer;" matTooltip="menu" matTooltipShowDelay="1000">menu
+          </mat-icon>
+
+          <mat-icon *ngIf="sidenav.opened" (click)="sidenav.toggle()" style="vertical-align: bottom;cursor: pointer;"
+            matTooltip="Close menu" matTooltipShowDelay="1000">arrow_back
+          </mat-icon>
+
+          <img src="assets/images/skysecuretechnologiesLogo.png" alt="Logo" class="logo" />
+
+          <div class="user-dropdown ms-auto">
+            <div *ngIf="flag" [matMenuTriggerFor]="userMenu">
+              <span class="user-name">Welcome {{ userName }}</span>
+              <span class="user-icon">{{ userNameFirstLetter }}</span>
+              <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
+
+            </div>
+            <div *ngIf="!flag" [matMenuTriggerFor]="userMenu">
+              <img src="assets/images/user.png" class="user-icon" />
+            </div>
+            <mat-menu #userMenu="matMenu">
+              <button mat-menu-item class="userM" (click)="profileButtonClicked('dashboard')">Dashboard</button>
+              <button *ngIf="flag" mat-menu-item class="userM"
+                (click)="profileButtonClicked('profile')">Profile</button>
+            </mat-menu>
+
+          </div>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <footer class="footer">
+      <div class="social-icons">
+        <a href="#"><img src="assets/images/fb.png" alt="Facebook"></a>
+        <a href="#"><img src="assets/images/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="assets/images/linkedIn.png" alt="LinkedIn"></a>
+      </div>
+      <div class="footer-text">@2023 All Rights Reserved</div>
+    </footer>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
